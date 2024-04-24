@@ -21,8 +21,12 @@
             </nav>
         </div>
     </aside>
-    <div class="w3-container" style="padding: 70px 16px; margin-left: 220px;">
-        {% block content %} {% endblock %}
-    </div>
+    <section id="content">
+        <header class="flex justify-between items-center py-4">
+            <h1 class="text-2xl font-bold">{{ section }}</h1>
+        </header>
+            {% block content %} {% endblock %}
+    </section>
+   
 </body>
 </html>

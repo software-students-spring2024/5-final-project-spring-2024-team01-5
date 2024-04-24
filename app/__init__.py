@@ -54,7 +54,7 @@ def create_app(test_config=None):
             return redirect(request.url)
         else:
             # Handle the GET request
-            return render_template("add.html")
+            return render_template("add.html", section="Add Course Grade")
     
     @app.route("/view_grades")
     def view_grades():  
