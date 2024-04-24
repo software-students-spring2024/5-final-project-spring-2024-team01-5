@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask Web App</title>
+    <title>Grade Calculator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -14,8 +14,9 @@
             <h1>GPA Calculator</h1>
             <nav>
                 <ul id="navList">
-                    <li data-target="add" class="{{ 'active' if request.path == '/add' else '' }}"><a href="/add">Add</a></li>
-                    <li data-target="view_all" class="{{ 'active' if request.path == '/view_all' else '' }}"><a href="/view_all">View All Grades</a></li>
+                    <li data-target="add" class="{{ 'active' if request.path == '/add_grade' else '' }}"><a href="/add_grade">Add Course Grade</a></li>
+                    <li data-target="view_all" class="{{ 'active' if request.path == '/view_grades' else '' }}"><a href="/view_grades">View All Grades</a></li>
+                    <li data-target="view_all" class="{{ 'active' if request.path == '/calculate' else '' }}"><a href="/calculate">Calculate Final Grade</a></li>
                 </ul>
             </nav>
         </div>
