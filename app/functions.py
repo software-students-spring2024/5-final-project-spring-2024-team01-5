@@ -17,7 +17,7 @@ def calculate_GPA(courses):
     return gpa_total
 
 courses = [{"grade": "A", "credits": 2}, {"grade": "C", "credits": 1}, {"grade": "C", "credits": 1}]
-print(calculate_GPA(courses))
+# print(calculate_GPA(courses))
 
 def percent_to_grade(percent):
     if percent >= 93:
@@ -62,4 +62,25 @@ def calculate_course_grade(grades):
     return percent_and_letter
 
 assignments = [{"percent": 90, "weight": 10}, {"percent": 95, "weight": 10}, {"percent": 80, "weight": 30}, {"percent": 80, "weight": 30}]
-print(calculate_course_grade(assignments))
+# print(calculate_course_grade(assignments))
+
+def calculate_final_exam_grade(current_grade, final_weight, target_grade):
+    """
+    Calculate the required final exam grade to achieve a target grade in the course.
+
+    :param current_grade: The current grade as a percentage (e.g., 75 for 75%).
+    :param target_grade: The target grade as a percentage (e.g., 80 for 80%).
+    :param final_weight: The weight of the final exam as a percentage (e.g., 30 for 30%).
+    :return: The required final exam grade as a percentage.
+    """
+    # Convert percentages to decimals for calculation
+    current_grade = current_grade / 100
+    target_grade = target_grade / 100
+    final_weight = final_weight / 100
+
+    # Calculate the required final exam grade
+    required_final = (target_grade - (1 - final_weight) * current_grade) / final_weight
+
+    # Convert the result back to a percentage
+    required_final_percent = required_final * 100
+    return required_final_percent
