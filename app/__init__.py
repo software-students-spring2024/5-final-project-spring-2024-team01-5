@@ -1,14 +1,20 @@
-"""Module providing framework for the web app."""
 from flask import Flask, render_template, request, redirect, flash
 from flask_cors import CORS
 from pymongo import MongoClient
-from functions import calculate_final_exam_grade, calculate_GPA, calculate_course_grade
+from functions import calculate_final_exam_grade, calculate_GPA
 import json
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 # DB Set up
 # TODO: Change these collection and db names if needed
-
-client = MongoClient("mongodb://localhost:27017/")
-db = client["GPACalculator"]
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+client = MongoClient(F"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.gpzcbbz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+db = client["GPAlCalculator"]
 collection = db["grades"]
 
 
@@ -51,9 +57,22 @@ def create_app(test_config=None):
             course_name = data["course_name"]
             course_grade = data["course_grade"]
             course_credits = data["course_credits"]
+            semester = data["semester"]
+            instructor = data["instructor"]
             # print(course_name, course_grade, course_credits)
             # Add a flash message
-            flash(f"Grade {course_grade} for {course_name} added successfully", "success")
+            flash(f"Grade {course_grade} for {course_name} {semester} added successfully", "success")
+            # Save grade to DB
+            grade = {
+                "course_name": course_name,
+                "course_grade": course_grade,
+                "course_credits": course_credits,
+                "semester": semester,
+                "instructor": instructor
+            }
+            print(grade)
+            collection.insert_one(grade)
+            print("Grade added to DB")
             return redirect(request.url)
         else:
             # Handle the GET request
@@ -64,10 +83,20 @@ def create_app(test_config=None):
         """
         Route for the view grades page.
         """
-
         # Fetch the grades from MongoDB using find({user_id: user_id}), after we add auth
-        # before we add auth, we can test by fetching all data
-        return render_template("view_grades.html", section="View All Grades")
+        print("Fetching grades from DB")
+        grades = collection.find()
+        
+        # create list of grade to credit dictionary for GPA calculation
+        courses = []
+        for grade in grades:
+            courses.append([grade["course_grade"], grade["course_credits"], grade["course_name"], grade["semester"], grade["instructor"]])
+        print(courses)
+        gpa = calculate_GPA(courses)
+        gpa = round(gpa, 3) 
+        print(gpa)
+        
+        return render_template("view_grades.html", section="View All Grades", gpa=gpa, courses=courses)
     
     @app.route("/calculate", methods=["GET", "POST"])
     def calculate():
