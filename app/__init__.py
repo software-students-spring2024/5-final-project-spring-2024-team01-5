@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, flash
 from flask_cors import CORS
 from pymongo import MongoClient
+from flask_pymongo import PyMongo
 from functions import calculate_final_exam_grade, calculate_GPA
 import json
 import os
@@ -9,6 +10,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+'''
 # DB Set up
 # TODO: Change these collection and db names if needed
 DB_USER = os.getenv("DB_USER")
@@ -16,7 +18,7 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 client = MongoClient(F"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.gpzcbbz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client["GPAlCalculator"]
 collection = db["grades"]
-
+'''
 
 def create_app(test_config=None):
     """
@@ -33,6 +35,13 @@ def create_app(test_config=None):
     CORS(app) # Enable CORS for all routes
     if test_config is not None:
         app.config.update(test_config)
+    
+    DB_USER = os.getenv("DB_USER")
+    DB_PASSWORD = os.getenv("DB_PASSWORD")
+    DB_CONNECTION = F"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.gpzcbbz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    app.config['MONGO_URI'] = DB_CONNECTION
+    client = PyMongo(app).cx["GPAlCalculator"]
+    collection = client.db.grades
 
     @app.route("/")
     def home():
