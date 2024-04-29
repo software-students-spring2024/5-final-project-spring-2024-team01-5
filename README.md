@@ -26,7 +26,7 @@ docker build -t app .
 2. Run the Docker container for the app
 
 ```
-docker run --name app -d --network mynetwork -p 5001:5001 web-app
+docker run --name app -d --network mynetwork -p 5001:5001 app
 ```
 
 3. Access the web-app at http://127.0.0.1:5001 or http://localhost:5001/
