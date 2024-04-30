@@ -1,5 +1,5 @@
 # in Docker, it is common to base a new image on a previously-created image
-FROM python:3.8
+FROM python:3.11
 
 # Set the working directory in the image
 WORKDIR /app
