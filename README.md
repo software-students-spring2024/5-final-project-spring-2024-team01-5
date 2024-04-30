@@ -1,4 +1,4 @@
-## TODO: Add CI/CD badge
+![CI/CD](https://github.com/software-students-spring2024/5-final-project-spring-2024-team01-5/actions/workflows/app.yml/badge.svg)
 
 # Grade Manager App
 
