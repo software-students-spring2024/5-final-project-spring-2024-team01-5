@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.11 for web-app
+      - name: Set up Python 3.11 for app
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
@@ -21,6 +21,6 @@ jobs:
           pipenv install --dev
         working-directory: ./app
 
-      - name: Run web-app tests with Pipenv
+      - name: Run app tests with Pipenv
         run: pipenv run pytest
         working-directory: ./app
