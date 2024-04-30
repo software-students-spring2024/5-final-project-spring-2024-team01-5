@@ -1,7 +1,7 @@
 FROM python:3.11
 # Set the working directory in the image
 WORKDIR /app
-
+COPY . /app
 COPY app/requirements.txt ./
 
 RUN pip3 install -r requirements.txt
