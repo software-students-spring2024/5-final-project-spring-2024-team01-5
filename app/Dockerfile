@@ -3,7 +3,7 @@ FROM python:3.11
 WORKDIR /app
 
 RUN echo ${PWD} && ls -lR
-COPY requirements.txt .
+COPY app/requirements.txt ./
 
 RUN pip3 install -r requirements.txt
 # the ADD command is how you add files from your local machine into a Docker image
