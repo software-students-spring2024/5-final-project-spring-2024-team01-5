@@ -28,6 +28,9 @@ This app is designed to allow users to keep track of their school grades. Users 
 ## Link to Container Image on Docker Hub
 [Link to Docker Hub](https://hub.docker.com/repository/docker/egnechng/swe-project-5)
 
+## Link to Deployment on Digital Ocean
+[Link to Deployment](https://oyster-app-fwz7o.ondigitalocean.app/)
+
 ## Team Members
 
 - [Nathanuel Dixon](https://github.com/nathanuel0322)
