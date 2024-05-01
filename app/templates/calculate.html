@@ -37,7 +37,7 @@
         </form>
         <div>
             <!-- <h1 id="final_grade">Final exam grade needed: </h1> -->
-            <h1 id="final_grade"></h1>
+            <h1 id="final_grade" style="width: fit-content;"></h1>
         </div>
     </div>
 
@@ -68,7 +68,11 @@ document.getElementById('gradeForm').addEventListener('submit', function(evt) {
     .then(data => {
         // Handle the JSON data here
         console.log(data);
-        document.getElementById("final_grade").innerText = `Final exam grade needed: ${data.final_grade}%`;
+        const finalgrade = document.getElementById("final_grade");
+        // add background-color: white; and customshadow class to #final_grade
+        finalgrade.classList.add("customshadow");
+        finalgrade.style.backgroundColor = "white"; 
+        finalgrade.innerText = `Final exam grade needed: ${data.final_grade}%`;
     })
     .catch(error => {
         console.error(error);
