@@ -1,15 +1,5 @@
 {% extends "layout.html" %} 
 {% block content %}
-<style>
-    form div {
-        margin: 20px;
-    }
-
-    form div label {
-        display: block;
-        margin-bottom: 5px;
-    }
-</style>
 <div>
     <form action="/add_grade" method="POST">
         <div>
@@ -18,12 +8,12 @@
         </div>
 
         <div>
-            <label for="course_name">Instructor: </label>
+            <label for="instructor">Instructor: </label>
             <input type="text" id="instructor" name="instructor" required>
         </div>
 
         <div>
-            <label for="course_name">Semester: </label>
+            <label for="semester">Semester: </label>
             <input type="text" id="semester" name="semester" required>
         </div>
 
@@ -50,7 +40,7 @@
         </div>
 
         <div>
-            <button type="submit" id="addgradebutton" style="">Add Grade</button>
+            <button type="submit" id="addgradebutton">Add Grade</button>
         </div>
     </form>
 </div>

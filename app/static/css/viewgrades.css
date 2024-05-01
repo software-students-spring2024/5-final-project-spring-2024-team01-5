@@ -1,0 +1,11 @@
+.gpa {
+    font-size: 28px;
+}
+table {
+    width: 90%;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}

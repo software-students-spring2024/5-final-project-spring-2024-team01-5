@@ -1,32 +1,10 @@
 {% extends "layout.html" %} 
 {% block content %}
-<style>
-    form div {
-        margin: 20px;
-    }
-
-    form div label {
-        display: block;
-        margin-bottom: 5px;
-    }
-    .gpa {
-        font-size: 28px;
-    }
-    table {
-        width: 90%;
-    }
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-</style>
-
 <div class="gpa">
     <h1>Your GPA: {{ gpa }}</h1>
 </div>
 
-<table>
+<table class="mt-[3vh]">
     <thead>
         <tr>
             <th>Course Name</th>
