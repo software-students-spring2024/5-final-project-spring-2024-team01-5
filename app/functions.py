@@ -1,6 +1,16 @@
 gpa_dict = {"A": 4, "A-": 3.7, "B+": 3.3, "B": 3, "B-": 2.7, 
             "C+": 2.3, "C": 2, "C-": 1.7, "D+": 1.3, "D": 1, "D-": 0.7, "F": 0}
+"""
+gpa_dict is a dictionary that maps letter grades to their corresponding GPA values.
+"""
+
 def calculate_GPA(courses):
+    """
+    Calculate the GPA based on a list of courses.
+
+    :param courses: A list of tuples where each tuple contains the course grade and credits.
+    :return: The GPA as a float.
+    """
     gpa_total = 0
     credits_sum = 0
 

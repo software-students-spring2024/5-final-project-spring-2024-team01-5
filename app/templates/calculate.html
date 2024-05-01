@@ -32,7 +32,7 @@
             </div>
 
             <div>
-                <button id="calculateForm" type="submit">Calculate</button>
+                <button id="calculateForm" type="submit" class="customshadow">Calculate</button>
             </div>
         </form>
         <div>
@@ -71,8 +71,15 @@ document.getElementById('gradeForm').addEventListener('submit', function(evt) {
         const finalgrade = document.getElementById("final_grade");
         // add background-color: white; and customshadow class to #final_grade
         finalgrade.classList.add("customshadow");
-        finalgrade.style.backgroundColor = "white"; 
-        finalgrade.innerText = `Final exam grade needed: ${data.final_grade}%`;
+        finalgrade.style.backgroundColor = "white";
+        finalgrade.innerHTML = `Final exam grade needed: ${data.final_grade}%<br><br>${
+            data.final_grade > 100 ? "You're <span class='font-bold'>COOKED</span>." : 
+            data.final_grade >= 90 ? "You're gonna have to <span class='font-bold'>LOCK IN</span>." :
+            data.final_grade >= 80 ? "You can do this, lightwork." :
+            data.final_grade >= 70 ? "You'll reach your goal even if you wake up late, you're chillin." :
+            data.final_grade >= 60 ? "Don't even bother studying." :
+            "LET'S GOOOOO"
+        }`;
     })
     .catch(error => {
         console.error(error);
