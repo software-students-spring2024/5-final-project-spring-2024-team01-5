@@ -60,7 +60,7 @@ class Tests:
         """
         response = client.get('/')
         assert response.status_code == 200
-        assert b'<h1>Welcome to the GPA Calculator</h1>' in response.data
+        assert b'<h1 id="gpatitle" class="text-[3vw] font-[800]">Welcome to the <span id="calctitle">GPA Calculator</span></h1>' in response.data
 
     def test_add_grade_route(self, client):
         """
