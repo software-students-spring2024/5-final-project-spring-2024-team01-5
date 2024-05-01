@@ -6,4 +6,9 @@
     background-color: green;
     color: white;
     border-color: transparent;
+    transition: all .3s;
+}
+#calculateForm:hover {
+    background-color: greenyellow;
+    color: black;
 }
