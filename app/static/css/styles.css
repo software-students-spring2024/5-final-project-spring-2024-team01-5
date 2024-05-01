@@ -172,10 +172,17 @@ header {
     row-gap: 4vh;
 }
 
-input {
+input, #course_grade, #addgradebutton {
     border: 2px solid gray;
     padding: 0.25rem !important;
     border-radius: 8px;
+}
+#addgradebutton {
+    transition: all .3s;
+}
+#addgradebutton:hover {
+    background-color: gray;
+    color: white;
 }
 #logindiv, #signupdiv {
     gap: 1vh;
@@ -209,4 +216,7 @@ th, td {
 }
 #taxesSection .infoSection {
     width: 32%;
+}
+#navList li:hover {
+    text-decoration: underline;
 }
